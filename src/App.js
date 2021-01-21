@@ -30,7 +30,7 @@ export default class App extends Component {
         ({ name }) => name.toLowerCase() === contact.name.toLowerCase()
       )
     ) {
-      swal("Cant add!", "Contact already exist!", "error");
+      swal(`${name} is already in contacts`);
       return;
     }
   };
