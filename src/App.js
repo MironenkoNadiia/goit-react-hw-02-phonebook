@@ -11,10 +11,11 @@ export default class App extends Component {
   }
 
 
-  addContact = name => {
+  addContact = (name,number) => {
     const contact = {
       id: nextId(),
-      name
+      name,
+      number
     };
 
     this.setState((prevState) => {
