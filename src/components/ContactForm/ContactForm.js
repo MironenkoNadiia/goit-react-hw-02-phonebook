@@ -15,6 +15,8 @@ export default class ContactForm extends Component {
     });
   };
 
+  
+
   handleNumberChange = (e) => {
     this.setState({
       number: e.target.value,

@@ -3,6 +3,8 @@ import ContactForm from "./components/ContactForm/ContactForm";
 import ContactList from "./components/ContactList/ContactList";
 import nextId from "react-id-generator";
 import Filter from "./components/Filter";
+import swal from "sweetalert";
+
 // import ContactList from "./components/ContactList";
 
 export default class App extends Component {
@@ -23,7 +25,17 @@ export default class App extends Component {
         contacts: [...prevState.contacts, contact],
       };
     });
+    if (
+      this.state.contacts.find(
+        ({ name }) => name.toLowerCase() === contact.name.toLowerCase()
+      )
+    ) {
+      swal("Cant add!", "Contact already exist!", "error");
+      return;
+    }
   };
+
+  
 
   removeContact = (contactId) => {
     this.setState((prevState) => {
@@ -32,6 +44,8 @@ export default class App extends Component {
       };
     });
   };
+
+  
 
   getVisibleContacts = () => {
     const { contacts, filter } = this.state;
@@ -44,6 +58,8 @@ export default class App extends Component {
   changeFilter = (filter) => {
     this.setState({ filter });
   };
+
+  
 
   render() {
     const { contacts, filter } = this.state;
