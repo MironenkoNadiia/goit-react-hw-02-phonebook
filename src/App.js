@@ -25,11 +25,19 @@ export default class App extends Component {
     });
   };
 
+  removeContact = (contactId) => {
+    this.setState((prevState) => {
+      return {
+        contacts: prevState.contacts.filter(({ id }) => id !== contactId),
+      };
+    });
+  };
+
   getVisibleContacts = () => {
     const { contacts, filter } = this.state;
 
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase()),
+    return contacts.filter((contact) =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
     );
   };
 
@@ -49,7 +57,8 @@ export default class App extends Component {
         <h2>Contacts</h2>
         <h3>Contacts by name</h3>
         <Filter value={filter} onChangeFilter={this.changeFilter} />
-        {contacts.length > 0 && <ContactList contacts={visibleContacts} />}
+        {contacts.length > 0 &&
+          <ContactList contacts={visibleContacts} onRemoveContact={this.removeContact}/>}
       </div>
     );
   }
