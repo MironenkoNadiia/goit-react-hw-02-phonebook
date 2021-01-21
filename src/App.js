@@ -1,19 +1,38 @@
-import React from "react";
+
+import React, { Component } from "react";
 import ContactForm from "./components/ContactForm/ContactForm";
+import ContactList from "./components/ContactList/ContactList";
+import nextId from "react-id-generator";
 // import ContactList from "./components/ContactList";
 
-const App=(props)=> {
- 
-    return (
-      <div>
-        <h1>Phonebook</h1>
-        <ContactForm  />
-
-        <h2>Contacts</h2>
-        {/* <ContactList />  */}
-      </div>
-    );
+export default class App extends Component {
+  state = {
+    contacts: [],
   }
 
 
-export default App;
+  addContact = name => {
+    const contact = {
+      id: nextId(),
+      name
+    };
+
+    this.setState((prevState) => {
+      return {
+        contacts: [...prevState.contacts, contact],
+      };
+    });
+  };
+
+  render() {
+  
+    const { contacts } = this.state;
+
+    return (
+      <div>
+        <ContactForm onAddContact={this.addContact} />
+        <ContactList contacts={contacts} />
+      </div>
+    );
+  };
+} 

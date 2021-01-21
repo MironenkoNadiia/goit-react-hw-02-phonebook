@@ -1,18 +1,24 @@
-// import PropTypes from "prop-types";
-// import { v4 as uuidv4 } from "uuid";
+import React from 'react';
 
-// function ContactList({ contacts }) {
-//   return;
-//   //
-// }
 
-// ContactList.propTypes = {
-//   contacts: PropTypes.arrayOf(
-//     PropTypes.shape({
-//       id: PropTypes.string.isRequired,
-//       name: PropTypes.string.isRequired,
-//     })
-//   ),
-// };
 
-// export default ContactList;
+const ContactList = ({contacts}) => {
+    return (
+        <ul>
+            
+            {contacts.map(({ id, name }) => {
+                return (
+                  <li>
+                    <p>
+                      {name}
+                    </p>
+                  </li>
+                );
+                
+            })}
+        </ul>
+    );
+};
+
+
+export default ContactList;
