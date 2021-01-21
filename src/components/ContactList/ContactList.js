@@ -1,12 +1,11 @@
 import React from "react";
-import {  } from "module";
 
 const ContactList = ({ contacts,onRemoveContact }) => {
   return (
     <ul>
       {contacts.map(({ name, number,id }) => {
         return (
-          <li>
+          <li key={id}>
             <p>{name}</p>
             <p>{number}</p>
             <section>
