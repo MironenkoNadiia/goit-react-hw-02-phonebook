@@ -15,8 +15,6 @@ export default class ContactForm extends Component {
     });
   };
 
-  
-
   handleNumberChange = (e) => {
     this.setState({
       number: e.target.value,
@@ -26,9 +24,9 @@ export default class ContactForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    this.props.onAddContact(this.state.name,this.state.number);
+    this.props.onAddContact(this.state.name, this.state.number);
 
-    this.setState({ name: "" , number:''});
+    this.setState({ name: "", number: "" });
   };
 
   render() {

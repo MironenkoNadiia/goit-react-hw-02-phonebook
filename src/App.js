@@ -5,8 +5,6 @@ import nextId from "react-id-generator";
 import Filter from "./components/Filter";
 import swal from "sweetalert";
 
-// import ContactList from "./components/ContactList";
-
 export default class App extends Component {
   state = {
     contacts: [],
@@ -35,8 +33,6 @@ export default class App extends Component {
     }
   };
 
-  
-
   removeContact = (contactId) => {
     this.setState((prevState) => {
       return {
@@ -44,8 +40,6 @@ export default class App extends Component {
       };
     });
   };
-
-  
 
   getVisibleContacts = () => {
     const { contacts, filter } = this.state;
@@ -59,8 +53,6 @@ export default class App extends Component {
     this.setState({ filter });
   };
 
-  
-
   render() {
     const { contacts, filter } = this.state;
 
@@ -73,8 +65,12 @@ export default class App extends Component {
         <h2>Contacts</h2>
         <h3>Contacts by name</h3>
         <Filter value={filter} onChangeFilter={this.changeFilter} />
-        {contacts.length > 0 &&
-          <ContactList contacts={visibleContacts} onRemoveContact={this.removeContact}/>}
+        {contacts.length > 0 && (
+          <ContactList
+            contacts={visibleContacts}
+            onRemoveContact={this.removeContact}
+          />
+        )}
       </div>
     );
   }
